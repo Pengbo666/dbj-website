@@ -1,0 +1,459 @@
+/* --------- Init------------ */
+body {
+  font-family:'黑体', 'Arial';
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /*background: #eae8db;*/
+  color: #111; }
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/*img {
+  max-width: 100%;
+  height: auto; }*/
+
+/* --------- Header------------ */
+header {
+  text-align: center;
+  /*background: rgba(0, 0, 0, .2);/*#2b2726*/*/
+}
+
+.logo {
+  float: left;
+  margin: 10px 0;
+}
+
+/* ----------- toggle ---------- */
+/* --------- menu botton position and hover background------------ */
+.menu-btn {
+  position: absolute;
+  top: 14px;
+  right: 5%;
+  z-index: 100;
+  display: block;
+  width: 60px;
+  height: 35px;
+  font-size: 0;
+  border: 2px solid #56c2cf;
+  border-radius: 4px;
+  /*background-color: #5b5756;*/
+}
+
+.menu-btn:hover {
+  /*background-color: #7b7776;*/
+  cursor: pointer;
+}
+/* --------- hamburger ------------ */
+.menu-btn span {
+  display: block;
+  position: absolute;
+  top: 14px;
+  left: 12px;
+  right: 12px;
+  height: 3px;
+  background: #56c2cf;
+}
+
+.menu-btn span::before,
+.menu-btn span::after {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #56c2cf;
+  content: "";
+}
+
+.menu-btn span::before {
+  top: -8px;
+}
+
+.menu-btn span::after {
+  bottom: -8px;
+}
+/* --------- nav position------------ */
+#nav {
+  position: absolute;
+  z-index: 16;
+  top: 62px;
+  left: 0;
+  width: 100%;
+  list-style: none;
+  text-align: left;
+}
+/* --------- hide nav anchor and label in close------------ */
+#nav a {
+  height: 0;
+  line-height: 3em;
+  display: block;
+  background: #FFF;/*#444*/
+  padding: 0 0 0 5%;
+  overflow: hidden;
+  color: #56c2cf;/*#FFF*/
+  text-decoration: none;
+  border-bottom: none;
+  -webkit-transition: 0.5s;
+     -moz-transition: 0.5s;
+      -ms-transition: 0.5s;
+       -o-transition: 0.5s;
+          transition: 0.5s;
+}
+
+#close label {
+  height: 0;
+  overflow: hidden;
+}
+
+/* ----------- checkbox --------------------- */
+/* --------- hide checkbox------------ */
+#toggle {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+/* --------- show nav anchor------------ */
+#toggle:checked ~ nav #nav a {
+  height: 3em;
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid #A6A6A6;
+}
+/* --------- nav anchor hover effect------------ */
+#toggle:checked ~ nav #nav a:hover {
+  /*background: #555;*/
+  color: #0F91BB;
+}
+/* --------- bring close to front and make it large------------ */
+#toggle:checked ~ nav #nav #close label {
+  height: 202em;
+  position: absolute;
+  top: -101em;
+  bottom: -101em;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+
+/* ----------- submenu --------------------- */
+/* ----------- submenu position --------------------- */
+#toggle:checked ~ nav #nav .submenu a {
+  padding-left: 7%;
+  color: #7A7E85;
+  /*background: #555;*/
+  border-bottom: none;
+}
+/* ----------- toggle hide submenu --------------------- */
+#toggle:checked ~ nav #nav .submenu a {
+  height: 0;
+  line-height: 3em;
+  -webkit-transition: 0.5s;
+     -moz-transition: 0.5s;
+      -ms-transition: 0.5s;
+       -o-transition: 0.5s;
+          transition: 0.5s;
+}
+/* ----------- toggle show submenu --------------------- */
+#toggle:checked ~ nav #nav .submenu.open a {
+  height: 3em;
+}
+
+
+/* ----------- media query --------------------- */
+@media screen and (min-width: 48em) {
+  /* ----------- hide menu button --------------------- */
+  .menu-btn {
+    display: none;
+  }
+  /* ----------- hide down icon --------------------- */
+  #nav .glyphicon {
+    display: none;
+  }
+  /* ----------- postion nav --------------------- */
+
+  #toggle:checked ~ nav #nav,
+  #nav {
+    top: 25px;
+    right: 2%;
+    left: 35%;
+    width: auto;
+  }
+  /* ----------- current anchor style --------------------- */
+  #toggle:checked ~ nav #nav li.current a,
+  #nav li.current a {
+    border-bottom: 4px solid #56c2cf;
+  }
+  /* ----------- inline nav li --------------------- */
+  #toggle:checked ~ nav #nav li,
+  #nav li {
+    display: inline;
+    float: left;
+  }
+  /* ----------- nav anchor hover effect --------------------- */
+  #toggle:checked ~ nav #nav a:hover {
+    background: none;
+  }
+  /* ----------- positon nav anchor --------------------- */
+  #toggle:checked ~ nav #nav a,
+  #nav a {
+    color: #7A7E85;
+    line-height: 2em;
+    height: 2em;
+    display: inline;
+    float: right;
+    background: transparent;
+    padding-top: 0;
+    padding-bottom: 33px;
+    padding-left: 1.15em;
+    padding-right: 1.15em;
+    border-bottom: 0; 
+  }
+  /* ----------- hide close --------------------- */
+  #toggle:checked ~ nav #nav #close,
+  #nav #close {
+    display: none;
+  }
+  /* ----------- hide toggle submenu --------------------- */
+  #toggle:checked ~ nav #nav .submenu,
+  #nav .submenu {
+    position: absolute;
+    left: -999em;
+  }
+  /* ----------- submenu position --------------------- */
+  #toggle:checked ~ nav #nav li:hover .submenu,
+  #nav li:hover .submenu {
+    left: auto;
+    top: 37px;
+    /*background: #2b2726;*/
+    max-width: 14em;
+    line-height: 3em;
+  }
+  /* ----------- show hover submenu --------------------- */
+  #toggle:checked ~ nav #nav li:hover .submenu a,
+  #nav li:hover .submenu a {
+    height: 3em;
+    
+    color: #A6A6A6;/*#eae8db*/
+    background: #FFF;/*#2b2726*/
+    padding-right: 1.75em;
+    width: 14em;
+    border-bottom: none;
+    -webkit-transition: none;
+     -moz-transition: none;
+      -ms-transition: none;
+       -o-transition: none;
+          transition: none;
+  }
+  /* ----------- submenu anchor hover effect --------------------- */
+  #toggle:checked ~ nav #nav li:hover .submenu a:hover,
+  #nav li:hover .submenu a:hover {
+    color: #56c2cf;;/*#7b7776*/
+  }
+}
+
+/* ----------- media query --------------------- */
+@media screen and (min-width: 52.5em) {
+  #toggle:checked ~ nav #nav,
+  #nav {
+    left: 33%; 
+  }
+  #toggle:checked ~ nav #nav a,
+  #nav a {
+    padding-left: 1.75em;
+    padding-right: 1.75em;  
+  }
+}
+
+/* ----------- media query --------------------- */
+@media screen and (min-width: 64em) {
+  #toggle:checked ~ nav #nav a,
+  #nav a {
+    padding-left: 2.25em;
+    padding-right: 2.25em; 
+  }
+}
+
+/* ----------- media query --------------------- */
+@media screen and (min-width: 75em) {
+  #toggle:checked ~ nav #nav,
+  #nav {
+    left: 32%; 
+  }
+
+  #toggle:checked ~ nav #nav a,
+  #nav a {
+    padding-left: 3.4em; 
+    padding-right: 3.4em; 
+  }
+}
+
+/* ----------- media query --------------------- */
+@media screen and (min-width: 83em) {
+  #toggle:checked ~ nav #nav,
+  #nav {
+    left: 37%;
+  }
+
+  #toggle:checked ~ nav #nav a,
+  #nav a {
+    padding-left: 4em;
+    padding-right: 4em;
+  }
+}
+
+/*
+ * Hamburger to "x" (htx). Takes on a hamburger shape, bars slide
+ * down to center and transform into an "x".
+ */
+.menu-btn span {
+  -webkit-transition: background 0s 0.3s;
+          transition: background 0s 0.3s;
+}
+
+.menu-btn span::before,
+.menu-btn span::after {
+  -webkit-transition-duration: 0.3s, 0.3s;
+          transition-duration: 0.3s, 0.3s;
+  -webkit-transition-delay: 0.3s, 0s;
+          transition-delay: 0.3s, 0s;
+}
+
+.menu-btn span::before {
+  -webkit-transition-property: top, -webkit-transform;
+          transition-property: top, transform;
+}
+
+.menu-btn span::after {
+  -webkit-transition-property: bottom, -webkit-transform;
+          transition-property: bottom, transform;
+}
+
+/* active state, i.e. menu open */
+/*.menu-btn.active {
+  background-color: #cb0032;
+}*/
+
+.menu-btn.active span {
+  background: none;
+}
+
+.menu-btn.active span::before {
+  top: 0;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.menu-btn.active span::after {
+  bottom: 0;
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.menu-btn.active span::before,
+.menu-btn.active span::after {
+  -webkit-transition-delay: 0s, 0.3s;
+          transition-delay: 0s, 0.3s;
+}
+
+.carousel img {
+  width: 100%;
+  height: auto;
+}
+
+.gallery {
+  text-align: center;
+}
+
+.gallery h2 {
+  color: #7A7E85;
+}
+
+.gallery p{
+  color: #A6A6A6;
+}
+
+.gallery-blue {
+  /*background-color: #00445B;
+  background-image: -webkit-linear-gradient(top, #0085AA, #00445B);
+  background-image: -moz-linear-gradient(top, #0085AA, #00445B);
+  background-image: -ms-linear-gradient(top, #0085AA, #00445B);
+  background-image: -o-linear-gradient(top, #0085AA, #00445B);
+  background-image: linear-gradient(top, #0085AA, #00445B);*/
+  background: #00BCD4;
+  float: left;
+}
+
+.service-item {
+}
+
+.gallery-container {
+  background-color: #FFF;
+}
+
+.gallery-container img {
+  width: 100%;
+  height: auto;
+}
+
+.learn-more {
+  color: #56c2cf;
+  background: none;
+  padding: 10px;
+  margin: 45px auto 30px;
+  border: 2px solid #56c2cf;
+  border-radius: 6px;
+  width: 125px;
+}
+
+.gallery-blue .learn-more {
+  color: #FFF;
+  border-color: #FFF;
+}
+
+.owl-carousel {
+  float: left;
+}
+
+.owl-carousel .item {
+  height: 120px;
+  text-align: center;
+  background: gray;
+}
+
+footer {
+  float: left;
+  width: 100%;
+  background: #45474D;
+  color: #cccdd1;
+}
+
+footer .links {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #5E6065;
+}
+.bottom-nav{
+  display: inline-block;
+  vertical-align: top;
+}
+.bottom-nav h3 {
+  font-weight: bold;
+  font-size: 16px;
+}
+.bottom-nav ul {
+  list-style: none;
+}
+
+.bottom-nav:nth-child(3) {
+  border-right: 2px solid #cccdd1;
+}
+
+.copyright {
+  padding: 10px;
+}
